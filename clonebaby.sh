@@ -28,14 +28,23 @@ brew install homebrew/dupes/grep
 
 # Install other useful binaries
 binaries=(
-  python
-  sshfs
-  tree
   ack
+  autojump
   git
+  glide
+  go
   hub
-  node
+  hugo
   maven
+  node
+  nvm
+  pt
+  python
+  rbenv
+  ruby-build
+  sshfs
+  the_platinum_searcher
+  tree
 )
 
 # Install the binaries
@@ -48,56 +57,55 @@ brew install caskroom/cask/brew-cask
 brew cleanup
 
 apps=(
+  1password
   alfred
+  bitbar
+  dash
+  disk-inventory-x
+  dockertoolbox
   dropbox
-  google-chrome
+  evernote
   firefox
-  spotify
+  flux
+  google-chrome
+  heroku-toolbelt
+  intellij-idea
+  istat-menus
+  iterm2
   java
-  sublime-text3
-  atom
-  mailbox
-  vlc
-  transmission
-  slack
+  polymail
   qlcolorcode
-  quicklook-json
   qlmarkdown
   qlstephen
-  intellij-idea
-  fantastical
-  heroku-toolbelt
-  iterm2
-  dockertoolbox
+  quicklook-json
+  slack
+  spotify
+  sublime-text3
+  telegram
+  virtualbox
+  vlc
 )
 
 # Adding beta versions
 brew tap caskroom/versions
 
 echo "Installing apps.."
-brew cask install --appdir="/Applications" ${apps[@]}
-
-# Linking Alfred to your casks
-open /Applications/Alfred\ 2.app
-brew cask alfred link
+brew cask install ${apps[@]}
 
 echo "Setting up zsh"
 curl -L http://install.ohmyz.sh | sh
-echo export PATH='/usr/local/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH' >> ~/.zshrc # <- TODO: Make idempotent
 
 #TODO: Dotfiles
-echo "Setting up VIM"
-cp -R dotfiles/.vim* ~
+mkdir ~/code
+git clone git@github.com:haraldringvold/zsh-dotfiles.git ~/code/zsh-dotfiles
+
+echo export PATH='/usr/local/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH' >> ~/.zshrc # <- TODO: Make idempotent
 
 echo "Settings.."
-defaults write com.apple.systemsound 'com.apple.sound.uiaudio.enabled' -int 0
 defaults write com.apple.finder AppleShowAllFiles YES
-defaults write -g InitialKeyRepeat -int 20
-defaults write -g KeyRepeat -int 1
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-#TODO: Terminal colors
-#TODO: Clean up zsh aliases
+echo "\nDone!"
+echo "Remember to install Pixelmator, Swipes and Wunderlist from AppStore"
 
 exit 0
 
