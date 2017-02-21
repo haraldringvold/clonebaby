@@ -43,7 +43,6 @@ binaries=(
   rbenv
   ruby-build
   sshfs
-  the_platinum_searcher
   tree
 )
 
@@ -68,7 +67,6 @@ apps=(
   firefox
   flux
   google-chrome
-  heroku-toolbelt
   intellij-idea
   istat-menus
   iterm2
@@ -105,7 +103,7 @@ echo "Settings.."
 defaults write com.apple.finder AppleShowAllFiles YES
 
 echo "\nDone!"
-echo "Remember to install Pixelmator, Swipes and Wunderlist from AppStore"
+echo "Remember to install Pixelmator from AppStore"
 
 exit 0
 
